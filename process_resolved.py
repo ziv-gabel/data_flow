@@ -19,6 +19,7 @@ with open(input_file, newline='', encoding='utf-8') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         if len(row) < 2:
+            print(f"skipped malformed line: {row}")
             continue  # Skip malformed lines
         ip, host = row[0].strip(), row[1].strip()
         host_data[host]["ip_addresses"].add(ip)
