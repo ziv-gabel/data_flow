@@ -31,7 +31,12 @@ pipeline {
         }
     }
     post {
+        success {
+            echo 'Pipeline succeeded. Archiving artifacts...'
+            archiveArtifacts artifacts: 'aggregated_*', allowEmptyArchive: true
+        }
         always {
+            cleanWs()
             echo 'Pipeline execution completed.'
         }
     }
